@@ -12,8 +12,10 @@ Please implement the following:
 
 1. Use a component library to make the UI and UX more appealing and user friendly.
 
-[Explain here why you chose the one you did]
-
+I chose shadcn/ui because: 
+  1. It integrates naturally with Next.js and Tailwind CSS, which are already part of the project stack. 
+  2. I have previous experience working with Material UI so the component-based approach is what I feel most comfortable working with. 
+  
 2. Implement dark mode that includes a switcher to go back to light mode.
 
 3. Deleting a book displays a JavaScript alert. Replace this with modern UX.

@@ -2,6 +2,10 @@
 
 import { Book } from "@/types/book";
 import { FormEvent, useState } from "react";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import { Label } from "./ui/Label";
+import { Textarea } from "./ui/Textarea";
 
 interface BookFormProps {
   book?: Book;
@@ -36,13 +40,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label
+        <Label
           htmlFor="title"
           className="block text-sm font-medium text-gray-700"
         >
           Title
-        </label>
-        <input
+        </Label>
+        <Input
           type="text"
           id="title"
           value={formData.title}
@@ -53,13 +57,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
       </div>
 
       <div>
-        <label
+        <Label
           htmlFor="author"
           className="block text-sm font-medium text-gray-700"
         >
           Author
-        </label>
-        <input
+        </Label>
+        <Input
           type="text"
           id="author"
           value={formData.author}
@@ -71,13 +75,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label
+          <Label
             htmlFor="price"
             className="block text-sm font-medium text-gray-700"
           >
             Price
-          </label>
-          <input
+          </Label>
+          <Input
             type="number"
             id="price"
             value={formData.price}
@@ -91,13 +95,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
         </div>
 
         <div>
-          <label
+          <Label
             htmlFor="currency"
             className="block text-sm font-medium text-gray-700"
           >
             Currency
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="currency"
             value={formData.currency}
@@ -111,13 +115,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
       </div>
 
       <div>
-        <label
+        <Label
           htmlFor="isbn"
           className="block text-sm font-medium text-gray-700"
         >
           ISBN
-        </label>
-        <input
+        </Label>
+        <Input
           type="text"
           id="isbn"
           value={formData.isbn}
@@ -128,13 +132,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
       </div>
 
       <div>
-        <label
+        <Label
           htmlFor="coverImage"
           className="block text-sm font-medium text-gray-700"
         >
           Cover Image URL
-        </label>
-        <input
+        </Label>
+        <Input
           type="text"
           id="coverImage"
           value={formData.coverImage}
@@ -147,13 +151,13 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
       </div>
 
       <div>
-        <label
+        <Label
           htmlFor="description"
           className="block text-sm font-medium text-gray-700"
         >
           Description
-        </label>
-        <textarea
+        </Label>
+        <Textarea
           id="description"
           value={formData.description}
           onChange={(e) =>
@@ -166,19 +170,18 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
       </div>
 
       <div className="flex justify-end gap-4">
-        <button
-          type="button"
+        <Button
           onClick={onCancel}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+          className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
         >
           Cancel
-        </button>
-        <button
+        </Button>
+        <Button
           type="submit"
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
+          className="text-white bg-blue-600 border border-transparent hover:bg-blue-700"
         >
           {book ? "Update Book" : "Add Book"}
-        </button>
+        </Button>
       </div>
     </form>
   );
