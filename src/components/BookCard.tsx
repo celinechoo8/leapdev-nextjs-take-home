@@ -23,7 +23,7 @@ export default function BookCard({ book, onEdit, onDelete }: BookCardProps) {
         </div>
       
         <div className="p-4">
-          <h3 className="text-lg font-semibold">{book.title}</h3>
+          <h3 className="text-lg font-semibold text-black">{book.title}</h3>
           <p className="text-gray-600">{book.author}</p>
           <p className="text-green-600 font-semibold mb-2">
             {book.currency} {book.price.toFixed(2)}
@@ -33,7 +33,7 @@ export default function BookCard({ book, onEdit, onDelete }: BookCardProps) {
           </p>
           <div className="mt-4 flex gap-2">
             <Button
-              variant="outline"
+              variant="secondary"
               onClick={() => onEdit(book)}
             >
               Edit
