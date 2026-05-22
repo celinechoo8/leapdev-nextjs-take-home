@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import { Star } from "lucide-react";
 
 interface BookFormProps {
   book?: Book;
@@ -169,8 +170,31 @@ export default function BookForm({ book, onSubmit, onCancel }: BookFormProps) {
         />
       </div>
 
+      <div>
+        <Label 
+          htmlFor="rating"
+          className="block text-sm font-medium text-gray-700">
+          Rating
+        </Label>
+        {[1, 2, 3, 4, 5].map((rating) => {
+          const shouldBeFilled = !!formData.rating && formData.rating >= rating;
+          return (
+            <Button
+              key={rating}
+              type="button"
+              variant="ghost"
+              onClick={() => setFormData({ ...formData, rating: rating })}
+              className={shouldBeFilled ? "text-yellow-500 hover:text-yellow-500" : "text-gray-300 hover:text-yellow-500" }
+            >
+              <Star size={20} fill={shouldBeFilled ? "currentColor" : "none"} />
+            </Button>
+          );
+        })}
+      </div>
+
       <div className="flex justify-end gap-4">
         <Button
+          type="button"
           onClick={onCancel}
           className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
         >

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Book } from "@/types/book";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
+import { Star } from "lucide-react";
 
 interface BookCardProps {
   book: Book;
@@ -23,7 +24,14 @@ export default function BookCard({ book, onEdit, onDelete }: BookCardProps) {
         </div>
       
         <div className="p-4">
-          <h3 className="text-lg font-semibold text-black">{book.title}</h3>
+          <div className="flex items-start justify-between">
+            <h3 className="text-lg font-semibold">{book.title}</h3>
+            <div className="flex items-center">
+              <span>{book.rating}</span>
+              <Star size={14} className="fill-yellow-500 text-yellow-500"
+              />
+            </div>
+          </div>
           <p className="text-gray-600">{book.author}</p>
           <p className="text-green-600 font-semibold mb-2">
             {book.currency} {book.price.toFixed(2)}

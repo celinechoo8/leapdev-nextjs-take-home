@@ -22,6 +22,8 @@ I chose shadcn/ui because:
 
 4. Add a rating system that goes up to 5 stars.
 
+Celine note: The static data in data.json implies that inputted ratings can be decimals. However, that level of detail is difficult to represent using a 5 star system, so I've chosen to keep the rating system to whole numbers (1-5). 
+
 5. There is a bug in the code. Find it and fix it.
 
 [Explain here what the bug was and how you fixed it]
