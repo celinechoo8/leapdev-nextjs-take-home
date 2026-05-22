@@ -26,6 +26,6 @@ Celine note: The static data in data.json implies that inputted ratings can be d
 
 5. There is a bug in the code. Find it and fix it.
 
-[Explain here what the bug was and how you fixed it]
+The book was not getting updated after it was edited. The handleUpdateBook function merged the updated book object with the existing book object in the wrong order (`{ ...updatedBook, ...book }`). That caused the existing book fields to completely overwrite the updated book fields. I fixed this by swapping the merge order (`{ ...book, ...updatedBook }`), so the updated fields now replace the original ones correctly.
 
 Good luck and have fun!
