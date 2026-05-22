@@ -5,13 +5,14 @@ import data from "../../public/data.json";
 import BookCard from "@/components/BookCard";
 import BookForm from "@/components/BookForm";
 import { Book } from "@/types/book";
-import { Button } from "@/components/ui/Button";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogTitle } from "@/components/ui/dialog";
 
 export default function Page() {
   const [books, setBooks] = useState<Book[]>(data as Book[]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | undefined>(undefined);
+  const [bookToDelete, setBookToDelete] = useState<Book | undefined>(undefined);
 
   const handleAddBook = (newBook: Partial<Book>) => {
     const book: Book = {
@@ -33,9 +34,15 @@ export default function Page() {
   };
 
   const handleDeleteBook = (id: number) => {
-    if (confirm("Are you sure you want to delete this book?")) {
-      setBooks(books.filter((book) => book.id !== id));
-    }
+    const book = books.find((b) => b.id === id);
+    setBookToDelete(book ?? undefined);
+  };
+
+  const confirmDeleteBook = () => {
+    if (!bookToDelete) return;
+    
+    setBooks(books.filter((book) => book.id !== bookToDelete.id));
+    setBookToDelete(undefined);
   };
 
   const handleEdit = (book: Book) => {
@@ -68,6 +75,7 @@ export default function Page() {
         ))}
       </div>
 
+      {/* Add/Edit Book Modal */}
       <Dialog
         open={isModalOpen}
         onOpenChange={(open) => {
@@ -87,6 +95,35 @@ export default function Page() {
               setSelectedBook(undefined);
             }}
           />
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation Modal */}
+      <Dialog
+        open={!!bookToDelete}
+        onOpenChange={(open) => {
+          if (!open) {
+            setBookToDelete(undefined)
+          }
+        }}
+      >
+        <DialogContent>
+          <DialogTitle>Confirm delete</DialogTitle>
+          <DialogDescription>Are you sure you want to delete {bookToDelete?.title}?</DialogDescription>
+          <DialogFooter>
+            <Button
+              variant="secondary"
+              onClick={() => setBookToDelete(undefined)}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={confirmDeleteBook}
+            >
+              Delete
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </main>
