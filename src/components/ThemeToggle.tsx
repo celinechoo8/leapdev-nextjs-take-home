@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Switch } from "@/components/ui/switch"
-import { Label } from "./ui/Label"
+import { Label } from "@/components/ui/label"
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null)

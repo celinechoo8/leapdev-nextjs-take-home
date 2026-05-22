@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Book } from "@/types/book";
+import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/Button";
 
 interface BookCardProps {
   book: Book;
